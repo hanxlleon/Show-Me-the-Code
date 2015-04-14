@@ -6,7 +6,8 @@ from PIL import Image
 import glob, os
 
 def search_imgfile(path):
-    return glob.glob(os.path.join(path, '*.jpg'))
+    abspath = os.path.abspath(path)
+    return glob.glob(os.path.join(abspath, '*.jpg'))
 
 def change_image_size(filename, size=(1136, 640)):
     im = Image.open(filename)
@@ -23,3 +24,6 @@ if __name__ == '__main__':
     imgfiles = search_imgfile('img')
     for img in imgfiles:
         change_image_size(img)
+        change_image_size(img, size=(1334, 750))
+        change_image_size(img, size=(2208, 1242))
+
